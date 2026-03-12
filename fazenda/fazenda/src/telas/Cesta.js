@@ -41,17 +41,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
+    padding: 55,
   },
   titulo: {
-    fontSize: 22,
+    fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 40,
   },
   subtitulo: {
     fontSize: 18,
     color: "#555",
-    marginBottom: 5,
+    marginBottom: 9,
   },
   preco: {
     fontSize: 18,
