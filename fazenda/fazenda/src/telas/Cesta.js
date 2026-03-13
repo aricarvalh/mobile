@@ -1,85 +1,40 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
 
-const cesta = {
-  nome: "Cesta de Verduras",
-  fazenda: "Fazenda Boa Terra",
-  preco: "R$ 40,00",
-  imagemFazenda: "https://img.freepik.com/fotos-gratis/bela-foto-de-uma-cerca-levando-a-uma-casa-em-uma-area-de-grama-verde_181624-18255.jpg?semt=ais_hybrid&w=740&q=80", // imagem ilustrativa
-  itens: [
-    { id: "1", nome: "Alface", imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzDfyFVciaG27fav2R6EvDbGxtVe3oumbwxw&s"},
-    { id: "2", nome: "Tomate", imagem: "https://static.vecteezy.com/system/resources/thumbnails/041/491/389/small/ai-generated-tomato-and-water-drop-isolated-background-png.png" },
-    { id: "3", nome: "Cenoura", imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrEW76RX-hslbFIScmPjaWhzpbwtKs6M_Y_Q&s" },
-    { id: "4", nome: "Batata", imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNWiOnX3mfN5-qDG22sxuRi_ox1spTtULRg&s" },
-  ],
-};
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>{cesta.nome}</Text>
-      <Text style={styles.subtitulo}>{cesta.fazenda}</Text>
-      <Image source={{ uri: cesta.imagemFazenda }} style={styles.imagemFazenda} />
-      <Text style={styles.preco}>{cesta.preco}</Text>
+export default function Cesta({ nome, fazenda, preco, imagemFazenda, itens }) {
+ return (
+   <View style={styles.container}>
+     <Text style={styles.titulo}>{nome}</Text>
+     <Text style={styles.subtitulo}>{fazenda}</Text>
+     <Image source={{ uri: imagemFazenda }} style={styles.imagemFazenda} />
+     <Text style={styles.preco}>{preco}</Text>
 
-      <Text style={styles.itensTitulo}>Itens da cesta:</Text>
-      <FlatList
-        data={cesta.itens}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
-            <Image source={{ uri: item.imagem }} style={styles.itemImagem} />
-            <Text style={styles.item}>{item.nome}</Text>
-          </View>
-        )}
-      />
-    </View>
-  );
+
+     <Text style={styles.itensTitulo}>Itens da cesta:</Text>
+     <FlatList
+       data={itens}
+       keyExtractor={(item) => item.id}
+       renderItem={({ item }) => (
+         <View style={styles.itemContainer}>
+           <Image source={{ uri: item.imagem }} style={styles.itemImagem} />
+           <Text style={styles.item}>{item.nome}</Text>
+         </View>
+       )}
+     />
+   </View>
+ );
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 55,
-  },
-  titulo: {
-    fontSize: 30,
-    fontWeight: "bold",
-    marginBottom: 40,
-  },
-  subtitulo: {
-    fontSize: 18,
-    color: "#555",
-    marginBottom: 9,
-  },
-  preco: {
-    fontSize: 18,
-    color: "green",
-    marginBottom: 15,
-  },
-  imagemFazenda: {
-    width: "100%",
-    height: 200,
-    marginBottom: 15,
-    borderRadius: 10,
-  },
-  itensTitulo: {
-    fontSize: 20,
-    marginBottom: 10,
-  },
-  itemContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  itemImagem: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
-    borderRadius: 5,
-  },
-  item: {
-    fontSize: 16,
-  },
+ container: { flex: 1, backgroundColor: "#fff", padding: 20, paddingTop: 60 }, // margem superior aumentada
+ titulo: { fontSize: 22, fontWeight: "bold", marginBottom: 5 },
+ subtitulo: { fontSize: 18, color: "#555", marginBottom: 5 },
+ preco: { fontSize: 18, color: "green", marginBottom: 15 },
+ imagemFazenda: { width: "100%", height: 200, marginBottom: 15, borderRadius: 10 },
+ itensTitulo: { fontSize: 20, marginBottom: 10 },
+ itemContainer: { flexDirection: "row", alignItems: "center", marginBottom: 15 },
+ itemImagem: { width: 50, height: 50, marginRight: 10, borderRadius: 5 },
+ item: { fontSize: 16 },
 });
